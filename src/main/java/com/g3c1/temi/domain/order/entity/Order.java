@@ -1,5 +1,6 @@
 package com.g3c1.temi.domain.order.entity;
 
+import com.g3c1.temi.domain.food.entity.Food;
 import com.g3c1.temi.domain.seat.entity.Seat;
 import lombok.*;
 
