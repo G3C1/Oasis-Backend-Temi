@@ -7,18 +7,15 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Getter
-@Builder
+@Getter @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Order {
+public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    @Column(name = "food_id")
+    @ManyToOne()
     private Food food;
-    @ManyToOne
-    @Column(name = "seat_id")
+    @ManyToOne()
     private Seat seat;
 }
