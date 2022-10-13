@@ -1,5 +1,6 @@
 package com.g3c1.temi.domain.seat.service;
 
+import com.g3c1.temi.domain.seat.entity.Seat;
 import com.g3c1.temi.domain.seat.presentation.dto.response.SeatInfoResponse;
 import com.g3c1.temi.domain.seat.repository.SeatRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,10 +20,14 @@ public class GetSeatInfoService {
 
     @Transactional(readOnly = true)
     public List<SeatInfoResponse> getSeatInfo(){
-        return getSeatInfoResponse();
+        List<Seat> seatList = getSeatList();
+        return getSeatInfoList(seatList);
     }
-    private List<SeatInfoResponse> getSeatInfoResponse() {
-        List<SeatInfoResponse> seatInfoList = seatRepository.findAll().stream().map(seat -> SeatInfoResponse.builder()
+    private List<Seat> getSeatList(){
+        return seatRepository.findAll();
+    }
+    private List<SeatInfoResponse> getSeatInfoList(List<Seat> seatList) {
+        List<SeatInfoResponse> seatInfoList = seatList.stream().map(seat -> SeatInfoResponse.builder()
                 .seatId(seat.getId())
                 .seatNumber(seat.getSeatNumber())
                 .seated(seat.getSeated())
