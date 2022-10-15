@@ -15,13 +15,13 @@ public class SelectSeatService {
     private final SeatRepository seatRepository;
 
     @Transactional(rollbackFor = Exception.class)
-    public void patchSeatInfo(SeatNumberRequest seatNumberRequest){
-        Seat seatInfo = findSeatInfoThroughSeatNumber(seatNumberRequest.getSeatNumber());
+    public void patchSeatInfo(Long seatId){
+        Seat seatInfo = findSeatInfoThroughSeatNumber(seatId);
         updateSeated(seatInfo);
 
     }
-    private Seat findSeatInfoThroughSeatNumber(int seatNumber){
-        return seatRepository.findSeatBySeatNumber(seatNumber);
+    private Seat findSeatInfoThroughSeatNumber(Long seatNumber){
+        return seatRepository.findSeatById(seatNumber);
     }
     private void updateSeated(Seat seatInfo){
         seatInfo.updateSeated();

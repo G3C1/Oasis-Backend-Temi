@@ -23,9 +23,9 @@ public class SeatController {
         List<SeatInfoResponse> seatInfoList = getSeatInfoService.getSeatInfo();
         return new ResponseEntity<>(seatInfoList, HttpStatus.OK);
     }
-    @PatchMapping
-    public ResponseEntity<Void> patchSeatInfo(@RequestParam(value = "seatNumber") SeatNumberRequest seatNumberRequest){
-        patchSeatService.patchSeatInfo(seatNumberRequest);
+    @PatchMapping("/{seatId}")
+    public ResponseEntity<Void> patchSeatInfo(@PathVariable("seatId")Long seatId){
+        patchSeatService.patchSeatInfo(seatId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface SeatRepository extends CrudRepository<Seat,Long> {
     List<Seat> findAll();
-    Seat findSeatBySeatNumber(int seatNumber);
+    Seat findSeatById(Long SeatId);
 }
