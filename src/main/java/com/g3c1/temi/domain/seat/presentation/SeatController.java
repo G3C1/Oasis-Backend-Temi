@@ -1,6 +1,5 @@
 package com.g3c1.temi.domain.seat.presentation;
 
-import com.g3c1.temi.domain.seat.presentation.dto.request.SeatNumberRequest;
 import com.g3c1.temi.domain.seat.presentation.dto.response.SeatInfoResponse;
 import com.g3c1.temi.domain.seat.service.FindSeatInfoService;
 import com.g3c1.temi.domain.seat.service.SelectSeatService;

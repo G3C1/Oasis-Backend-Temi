@@ -1,7 +1,7 @@
 package com.g3c1.temi.domain.seat.service;
 
 import com.g3c1.temi.domain.seat.entity.Seat;
-import com.g3c1.temi.domain.seat.presentation.dto.request.SeatNumberRequest;
+import com.g3c1.temi.domain.seat.exception.SeatNotFoundException;
 import com.g3c1.temi.domain.seat.repository.SeatRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ public class SelectSeatService {
 
     }
     private Seat findSeatInfoThroughSeatNumber(Long seatNumber){
-        return seatRepository.findSeatById(seatNumber);
+        return seatRepository.findSeatById(seatNumber).orElseThrow(()->new SeatNotFoundException("좌석을 찾을 수 없습니다."));
     }
     private void updateSeated(Seat seatInfo){
         seatInfo.updateSeated();

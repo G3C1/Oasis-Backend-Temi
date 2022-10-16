@@ -1,10 +1,10 @@
 package com.g3c1.temi.global.exception;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ErrorResponse {
     private final String message;
     private final int status;
