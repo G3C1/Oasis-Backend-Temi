@@ -16,9 +16,9 @@ public class Seat {
     private int seatNumber;
     @Column(name = "several_people")
     private int severalPeople;
-    private Boolean seated;
+    private Boolean enable;
 
     public void updateSeated(){
-        seated = true;
+        enable = false;
     }
 }

@@ -1,10 +1,8 @@
 package com.g3c1.temi.domain.food.entity;
 
 import lombok.*;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 
 @Entity
 @Getter @Builder
@@ -19,4 +17,6 @@ public class Food {
     private String description;
     private Integer servings;
     private Integer price;
+    @ManyToOne()
+    private Category category;
 }

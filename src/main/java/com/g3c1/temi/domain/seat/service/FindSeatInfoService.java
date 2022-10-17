@@ -18,7 +18,7 @@ public class FindSeatInfoService {
     private final SeatRepository seatRepository;
 
     @Transactional(readOnly = true)
-    public List<SeatInfoResponse> getSeatInfo(){
+    public List<SeatInfoResponse> execute(){
         List<Seat> seatList = getSeatList();
         return getSeatInfoList(seatList);
     }
@@ -29,7 +29,7 @@ public class FindSeatInfoService {
         List<SeatInfoResponse> seatInfoList = seatList.stream().map(seat -> SeatInfoResponse.builder()
                 .seatId(seat.getId())
                 .seatNumber(seat.getSeatNumber())
-                .seated(seat.getSeated())
+                .seated(seat.getEnable())
                 .severalPeople(seat.getSeveralPeople())
                 .build()).collect(Collectors.toList());
         return seatInfoList;

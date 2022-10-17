@@ -19,12 +19,12 @@ public class SeatController {
 
     @GetMapping
     public ResponseEntity<List<SeatInfoResponse>> getSeatInfo(){
-        List<SeatInfoResponse> seatInfoList = getSeatInfoService.getSeatInfo();
+        List<SeatInfoResponse> seatInfoList = getSeatInfoService.execute();
         return new ResponseEntity<>(seatInfoList, HttpStatus.OK);
     }
     @PatchMapping("/{seatId}")
     public ResponseEntity<Void> patchSeatInfo(@PathVariable("seatId")Long seatId){
-        patchSeatService.patchSeatInfo(seatId);
+        patchSeatService.execute(seatId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

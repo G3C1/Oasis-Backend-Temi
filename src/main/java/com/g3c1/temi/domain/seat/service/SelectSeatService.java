@@ -15,7 +15,7 @@ public class SelectSeatService {
     private final SeatRepository seatRepository;
 
     @Transactional(rollbackFor = Exception.class)
-    public void patchSeatInfo(Long seatId){
+    public void execute(Long seatId){
         Seat seatInfo = findSeatInfoThroughSeatNumber(seatId);
         updateSeated(seatInfo);
 
