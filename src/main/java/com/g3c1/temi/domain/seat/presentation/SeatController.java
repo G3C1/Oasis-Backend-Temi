@@ -32,7 +32,7 @@ public class SeatController {
     }
     @PatchMapping("/cancel/{seatId}")
     public ResponseEntity<Void> disEnableSeat(@PathVariable("seatId")Long seatId){
-        enableSeatService.execute(seatId);
+        disEnableSeatService.execute(seatId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

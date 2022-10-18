@@ -18,4 +18,9 @@ public class Purchase {
     private Food food;
     @ManyToOne()
     private Seat seat;
+
+    public Purchase(Food foodInfo, Seat seatInfo) {
+        this.food = foodInfo;
+        this.seat = seatInfo;
+    }
 }

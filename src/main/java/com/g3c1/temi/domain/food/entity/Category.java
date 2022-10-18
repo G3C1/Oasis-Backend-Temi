@@ -13,7 +13,4 @@ public class Category {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany()
-    @JoinColumn(name = "food_list")
-    private List<Food> foodList;
 }
