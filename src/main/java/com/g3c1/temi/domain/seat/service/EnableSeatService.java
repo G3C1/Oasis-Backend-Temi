@@ -11,19 +11,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class SelectSeatService {
+public class EnableSeatService {
     private final SeatRepository seatRepository;
 
     @Transactional(rollbackFor = Exception.class)
     public void execute(Long seatId){
         Seat seatInfo = findSeatInfoThroughSeatNumber(seatId);
         updateSeated(seatInfo);
-
     }
     private Seat findSeatInfoThroughSeatNumber(Long seatNumber){
         return seatRepository.findSeatById(seatNumber).orElseThrow(()->new SeatNotFoundException("좌석을 찾을 수 없습니다."));
     }
     private void updateSeated(Seat seatInfo){
-        seatInfo.updateSeated();
+        seatInfo.updateSeated(false);
     }
 }

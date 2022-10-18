@@ -23,8 +23,7 @@ public class GetFoodListService {
 
     public List<FoodListResponse> execute(){
         List<Category> categories = getCategoryList();
-        List<FoodListResponse> categoryFoodList = getCategoryFoodList(categories);
-        return categoryFoodList;
+        return getCategoryFoodList(categories);
 
     }
     private List<Category> getCategoryList(){

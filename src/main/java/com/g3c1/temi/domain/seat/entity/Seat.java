@@ -18,7 +18,7 @@ public class Seat {
     private int severalPeople;
     private Boolean enabled;
 
-    public void updateSeated(){
-        enabled = false;
+    public void updateSeated(Boolean enable){
+        enabled = enable;
     }
 }

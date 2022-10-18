@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 public class FindSeatInfoService {
     private final SeatRepository seatRepository;
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true,rollbackFor = Exception.class)
     public List<SeatInfoResponse> execute(){
         List<Seat> seatList = getSeatList();
         return getSeatInfoList(seatList);
