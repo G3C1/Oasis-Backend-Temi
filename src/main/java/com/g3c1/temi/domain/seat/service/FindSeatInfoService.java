@@ -29,7 +29,7 @@ public class FindSeatInfoService {
         List<SeatInfoResponse> seatInfoList = seatList.stream().map(seat -> SeatInfoResponse.builder()
                 .seatId(seat.getId())
                 .seatNumber(seat.getSeatNumber())
-                .seated(seat.getEnable())
+                .seated(seat.getEnabled())
                 .severalPeople(seat.getSeveralPeople())
                 .build()).collect(Collectors.toList());
         return seatInfoList;

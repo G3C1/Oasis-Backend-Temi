@@ -16,7 +16,7 @@ public class Food {
     private String img;
     private String description;
     private Integer servings;
-    private Integer price;
+    private Long price;
     @ManyToOne()
     private Category category;
 }
