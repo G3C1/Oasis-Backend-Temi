@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter @Builder
 @RequiredArgsConstructor
-public class FoodListResponse {
+public class CategoryFoodListResponse {
     private final Long id;
     private final String category;
     private final List<FoodInfoResponse> foodList;

@@ -8,6 +8,7 @@ import com.g3c1.temi.domain.purchase.presentation.dto.request.PurchaseFoodReques
 import com.g3c1.temi.domain.purchase.repository.PurchaseRepository;
 import com.g3c1.temi.domain.seat.entity.Seat;
 import com.g3c1.temi.domain.seat.repository.SeatRepository;
+import com.g3c1.temi.domain.seat.utils.SeatUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +19,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PurchaseFoodService {
     private final PurchaseRepository purchaseRepository;
-    private final SeatRepository seatRepository;
     private final FoodRepository foodRepository;
+    private final SeatUtils seatUtils;
 
     public void execute(PurchaseFoodRequest purchaseFoodRequest){
-        Seat seatInfo = seatRepository.findSeatById(purchaseFoodRequest.getSeatId()).orElseThrow();
+        Seat seatInfo = seatUtils.getSeatInfo(purchaseFoodRequest.getSeatId());
         saveAllFoodList(purchaseFoodRequest.getFoodIdList(),seatInfo);
     }
     private Food findFood(Long foodId) {

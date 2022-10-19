@@ -2,7 +2,7 @@ package com.g3c1.temi.domain.food.service;
 
 import com.g3c1.temi.domain.food.entity.Category;
 import com.g3c1.temi.domain.food.presentation.dto.response.FoodInfoResponse;
-import com.g3c1.temi.domain.food.presentation.dto.response.FoodListResponse;
+import com.g3c1.temi.domain.food.presentation.dto.response.CategoryFoodListResponse;
 import com.g3c1.temi.domain.food.repository.CategoryRepository;
 import com.g3c1.temi.domain.food.repository.FoodRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,14 +19,14 @@ public class GetFoodListService {
     private final FoodRepository foodRepository;
     private final CategoryRepository categoryRepository;
 
-    public List<FoodListResponse> execute(){
+    public List<CategoryFoodListResponse> execute(){
         List<Category> categories = getCategoryList();
         return getCategoryFoodList(categories);
     }
     private List<Category> getCategoryList(){
         return categoryRepository.findAll();
     }
-    private List<FoodInfoResponse> getFoodListByCategory(String category){
+    private List<FoodInfoResponse> getFoodInfoListByCategory(String category){
        return foodRepository.findAllByCategory(category).stream().map(food -> FoodInfoResponse.builder()
                 .id(food.getId())
                 .name(food.getName())
@@ -36,15 +36,14 @@ public class GetFoodListService {
                 .description(food.getDescription())
                 .build()).collect(Collectors.toList());
     }
-    private List<FoodListResponse> getCategoryFoodList(List<Category> categories){
-        List<FoodListResponse> foodListResponses = categories.stream().map(category -> {
-            List<FoodInfoResponse> foodInfoResponses = getFoodListByCategory(category.getName());
-            return FoodListResponse.builder()
+    private List<CategoryFoodListResponse> getCategoryFoodList(List<Category> categories){
+        return categories.stream().map(category -> {
+            List<FoodInfoResponse> foodInfoResponses = getFoodInfoListByCategory(category.getName());
+            return CategoryFoodListResponse.builder()
                     .id(category.getId())
                     .category(category.getName())
                     .foodList(foodInfoResponses)
                     .build();
         }).collect(Collectors.toList());
-        return foodListResponses;
     }
 }

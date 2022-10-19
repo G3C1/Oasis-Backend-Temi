@@ -1,6 +1,6 @@
 package com.g3c1.temi.domain.food.presentation;
 
-import com.g3c1.temi.domain.food.presentation.dto.response.FoodListResponse;
+import com.g3c1.temi.domain.food.presentation.dto.response.CategoryFoodListResponse;
 import com.g3c1.temi.domain.food.service.GetFoodListService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,8 +18,8 @@ public class FoodController {
     private final GetFoodListService getFoodListService;
 
     @GetMapping
-    public ResponseEntity<List<FoodListResponse>> getFoodList(){
-        List<FoodListResponse> foodList = getFoodListService.execute();
+    public ResponseEntity<List<CategoryFoodListResponse>> getFoodList(){
+        List<CategoryFoodListResponse> foodList = getFoodListService.execute();
         return new ResponseEntity<>(foodList, HttpStatus.OK);
     }
 }
