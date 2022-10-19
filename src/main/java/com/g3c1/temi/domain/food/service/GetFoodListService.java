@@ -27,7 +27,7 @@ public class GetFoodListService {
         return categoryRepository.findAll();
     }
     private List<CategoryFoodListResponse> getCategoryFoodList(List<Category> categories){
-        List<CategoryFoodListResponse> foodListResponses = categories.stream().map(category -> {
+        return categories.stream().map(category -> {
             List<FoodInfoResponse> foodInfoResponses = getFoodInfoListByCategory(category.getName());
             return CategoryFoodListResponse.builder()
                     .id(category.getId())
@@ -35,7 +35,6 @@ public class GetFoodListService {
                     .foodList(foodInfoResponses)
                     .build();
         }).collect(Collectors.toList());
-        return foodListResponses;
     }
     private List<FoodInfoResponse> getFoodInfoListByCategory(String categoryName){
         Category category1 = categoryRepository.findCategoryByName(categoryName);
