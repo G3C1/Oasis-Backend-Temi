@@ -1,6 +1,5 @@
 package com.g3c1.temi.domain.food.presentation;
 
-import com.g3c1.temi.domain.food.entity.Food;
 import com.g3c1.temi.domain.food.presentation.dto.response.FoodListResponse;
 import com.g3c1.temi.domain.food.service.GetFoodListService;
 import lombok.RequiredArgsConstructor;

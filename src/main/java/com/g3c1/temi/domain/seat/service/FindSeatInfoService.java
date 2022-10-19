@@ -2,7 +2,6 @@ package com.g3c1.temi.domain.seat.service;
 
 import com.g3c1.temi.domain.seat.entity.Seat;
 import com.g3c1.temi.domain.seat.presentation.dto.response.SeatInfoResponse;
-import com.g3c1.temi.domain.seat.repository.SeatRepository;
 import com.g3c1.temi.domain.seat.utils.SeatUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
