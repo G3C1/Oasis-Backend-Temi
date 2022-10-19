@@ -3,7 +3,6 @@ package com.g3c1.temi.domain.food.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter @Builder

@@ -25,12 +25,11 @@ public class PurchaseFoodService {
         Seat seatInfo = seatRepository.findSeatById(purchaseFoodRequest.getSeatId()).orElseThrow();
         saveAllFoodList(purchaseFoodRequest.getFoodIdList(),seatInfo);
     }
-    private static Purchase getPurchase(Seat seatInfo, Food foodInfo) {
-        return new Purchase(foodInfo, seatInfo);
-    }
-
     private Food findFood(Long foodId) {
         return foodRepository.findFoodById(foodId).orElseThrow(() -> new FoodNotFoundException("음식을 찾을 수 없습니다."));
+    }
+    private static Purchase getPurchase(Seat seatInfo, Food foodInfo) {
+        return new Purchase(foodInfo, seatInfo);
     }
     private void saveAllFoodList(List<Long>foodIdList,Seat seatInfo){
         purchaseRepository.saveAll(foodIdList.stream()
