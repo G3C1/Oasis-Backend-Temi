@@ -1,7 +1,7 @@
 package com.g3c1.temi.domain.seat.presentation;
 
 import com.g3c1.temi.domain.seat.presentation.dto.response.SeatInfoResponse;
-import com.g3c1.temi.domain.seat.service.DisEnableSeatService;
+import com.g3c1.temi.domain.seat.service.DisableSeatService;
 import com.g3c1.temi.domain.seat.service.FindSeatInfoService;
 import com.g3c1.temi.domain.seat.service.EnableSeatService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import java.util.List;
 public class SeatController {
     private final FindSeatInfoService getSeatInfoService;
     private final EnableSeatService enableSeatService;
-    private final DisEnableSeatService disEnableSeatService;
+    private final DisableSeatService disEnableSeatService;
 
 
     @GetMapping
