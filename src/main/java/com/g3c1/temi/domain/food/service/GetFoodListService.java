@@ -26,18 +26,8 @@ public class GetFoodListService {
     private List<Category> getCategoryList(){
         return categoryRepository.findAll();
     }
-    private List<FoodInfoResponse> getFoodInfoListByCategory(String category){
-       return foodRepository.findAllByCategory(category).stream().map(food -> FoodInfoResponse.builder()
-                .id(food.getId())
-                .name(food.getName())
-                .img(food.getImg())
-                .price(food.getPrice())
-                .servings(food.getServings())
-                .description(food.getDescription())
-                .build()).collect(Collectors.toList());
-    }
     private List<CategoryFoodListResponse> getCategoryFoodList(List<Category> categories){
-        return categories.stream().map(category -> {
+        List<CategoryFoodListResponse> foodListResponses = categories.stream().map(category -> {
             List<FoodInfoResponse> foodInfoResponses = getFoodInfoListByCategory(category.getName());
             return CategoryFoodListResponse.builder()
                     .id(category.getId())
@@ -45,5 +35,17 @@ public class GetFoodListService {
                     .foodList(foodInfoResponses)
                     .build();
         }).collect(Collectors.toList());
+        return foodListResponses;
+    }
+    private List<FoodInfoResponse> getFoodInfoListByCategory(String categoryName){
+        Category category1 = categoryRepository.findCategoryByName(categoryName);
+       return foodRepository.findFoodByCategory(category1).stream().map(food -> FoodInfoResponse.builder()
+                .id(food.getId())
+                .name(food.getName())
+                .img(food.getImg())
+                .price(food.getPrice())
+                .servings(food.getServings())
+                .description(food.getDescription())
+                .build()).collect(Collectors.toList());
     }
 }
