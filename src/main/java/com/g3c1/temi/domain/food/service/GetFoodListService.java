@@ -1,9 +1,9 @@
 package com.g3c1.temi.domain.food.service;
 
-import com.g3c1.temi.domain.food.entity.Category;
+import com.g3c1.temi.domain.category.entity.Category;
 import com.g3c1.temi.domain.food.presentation.dto.response.FoodInfoResponse;
 import com.g3c1.temi.domain.food.presentation.dto.response.CategoryFoodListResponse;
-import com.g3c1.temi.domain.food.repository.CategoryRepository;
+import com.g3c1.temi.domain.category.repository.CategoryRepository;
 import com.g3c1.temi.domain.food.repository.FoodRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

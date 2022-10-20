@@ -1,4 +1,4 @@
-package com.g3c1.temi.domain.food.entity;
+package com.g3c1.temi.domain.category.entity;
 
 import lombok.*;
 

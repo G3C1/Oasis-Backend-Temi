@@ -1,7 +1,7 @@
-package com.g3c1.temi.domain.food.repository;
+package com.g3c1.temi.domain.category.repository;
 
 
-import com.g3c1.temi.domain.food.entity.Category;
+import com.g3c1.temi.domain.category.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
