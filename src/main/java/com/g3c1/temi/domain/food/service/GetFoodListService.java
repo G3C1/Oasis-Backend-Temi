@@ -8,6 +8,7 @@ import com.g3c1.temi.domain.food.repository.FoodRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +20,7 @@ public class GetFoodListService {
     private final FoodRepository foodRepository;
     private final CategoryRepository categoryRepository;
 
+    @Transactional(readOnly = true,rollbackFor = Exception.class)
     public List<CategoryFoodListResponse> execute(){
         List<Category> categories = getCategoryList();
         return getCategoryFoodList(categories);

@@ -1,8 +1,8 @@
 package com.g3c1.temi.domain.seat.service;
 
 import com.g3c1.temi.domain.seat.entity.Seat;
-import com.g3c1.temi.domain.seat.exception.SeatNotEnableException;
 import com.g3c1.temi.domain.seat.utils.SeatUtils;
+import com.g3c1.temi.domain.seat.utils.SeatValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,18 +12,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class DisableSeatService {
 
     private final SeatUtils seatUtils;
+    private final SeatValidator seatValidator;
 
-        @Transactional(rollbackFor = Exception.class)
-        public void execute(Long seatId){
-            Seat seatInfo = seatUtils.getSeatInfo(seatId);
-            checkEnabled(seatInfo);
-            updateSeated(seatInfo);
-        }
-    public void checkEnabled(Seat seat){
-        if(seat.getEnabled() == true) throw new SeatNotEnableException("좌석을 사용할 수 없습니다.");
+    @Transactional(rollbackFor = Exception.class)
+    public void execute(Long seatId){
+        Seat seatInfo = seatUtils.getSeatInfo(seatId);
+        seatValidator.checkSeatIsNotUsed(seatInfo);
+        updateSeated(seatInfo);
     }
-        private void updateSeated(Seat seatInfo){
+    private void updateSeated(Seat seatInfo){
             seatInfo.updateSeated(true);
-        }
     }
+}
 

@@ -6,11 +6,11 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class SeatNotDisableException extends RuntimeException {
+public class SeatNotAbleException extends RuntimeException {
     private final ErrorCode errorCode;
 
-    public SeatNotDisableException(String message){
+    public SeatNotAbleException(String message){
         super(message);
-        this.errorCode = ErrorCode.SEAT_NOT_DISABLE;
+        this.errorCode = ErrorCode.SEAT_NOT_ABLE;
     }
 }

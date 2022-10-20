@@ -1,7 +1,7 @@
 package com.g3c1.temi.global.exception.handler;
 
 import com.g3c1.temi.domain.purchase.exception.FoodNotFoundException;
-import com.g3c1.temi.domain.seat.exception.SeatNotDisableException;
+import com.g3c1.temi.domain.seat.exception.SeatNotAbleException;
 import com.g3c1.temi.domain.seat.exception.SeatNotEnableException;
 import com.g3c1.temi.domain.seat.exception.SeatNotFoundException;
 import com.g3c1.temi.global.exception.ErrorResponse;
@@ -20,8 +20,8 @@ public class GlobalExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse(exception.getErrorCode().getMessage(), exception.getErrorCode().getStatus());
         return new ResponseEntity<>(errorResponse, HttpStatus.valueOf(exception.getErrorCode().getStatus()));
     }
-    @ExceptionHandler(SeatNotDisableException.class)
-    public ResponseEntity<ErrorResponse> handleSeatNotDisableException(SeatNotDisableException exception){
+    @ExceptionHandler(SeatNotAbleException.class)
+    public ResponseEntity<ErrorResponse> handleSeatNotDisableException(SeatNotAbleException exception){
         ErrorResponse errorResponse = new ErrorResponse(exception.getErrorCode().getMessage(), exception.getErrorCode().getStatus());
         return new ResponseEntity<>(errorResponse, HttpStatus.valueOf(exception.getErrorCode().getStatus()));
     }

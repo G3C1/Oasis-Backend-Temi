@@ -7,10 +7,11 @@ import com.g3c1.temi.domain.purchase.exception.FoodNotFoundException;
 import com.g3c1.temi.domain.purchase.presentation.dto.request.PurchaseFoodRequest;
 import com.g3c1.temi.domain.purchase.repository.PurchaseRepository;
 import com.g3c1.temi.domain.seat.entity.Seat;
-import com.g3c1.temi.domain.seat.repository.SeatRepository;
 import com.g3c1.temi.domain.seat.utils.SeatUtils;
+import com.g3c1.temi.domain.seat.utils.SeatValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,9 +22,12 @@ public class PurchaseFoodService {
     private final PurchaseRepository purchaseRepository;
     private final FoodRepository foodRepository;
     private final SeatUtils seatUtils;
+    private final SeatValidator seatValidator;
 
+    @Transactional(rollbackFor = Exception.class)
     public void execute(PurchaseFoodRequest purchaseFoodRequest){
         Seat seatInfo = seatUtils.getSeatInfo(purchaseFoodRequest.getSeatId());
+        seatValidator.checkSeatIsNotUsed(seatInfo);
         saveAllFoodList(purchaseFoodRequest.getFoodIdList(),seatInfo);
     }
     private Food findFood(Long foodId) {
