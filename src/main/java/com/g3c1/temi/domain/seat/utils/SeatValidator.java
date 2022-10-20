@@ -3,7 +3,9 @@ package com.g3c1.temi.domain.seat.utils;
 import com.g3c1.temi.domain.seat.entity.Seat;
 import com.g3c1.temi.domain.seat.exception.SeatNotEnableException;
 import com.g3c1.temi.domain.seat.exception.SeatNotAbleException;
-
+import org.springframework.stereotype.Component;
+    
+@Component
 public class SeatValidator {
     public void checkSeatIsNotUsed(Seat seatInfo){
         if(seatInfo.getEnabled()) throw new SeatNotAbleException("사용중이지 않은 좌석입니다.");
