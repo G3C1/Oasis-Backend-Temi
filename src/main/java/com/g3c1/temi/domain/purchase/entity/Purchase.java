@@ -2,6 +2,7 @@ package com.g3c1.temi.domain.purchase.entity;
 
 import com.g3c1.temi.domain.food.entity.Food;
 import com.g3c1.temi.domain.seat.entity.Seat;
+import com.g3c1.temi.global.entity.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Getter @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Purchase {
+public class Purchase extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
