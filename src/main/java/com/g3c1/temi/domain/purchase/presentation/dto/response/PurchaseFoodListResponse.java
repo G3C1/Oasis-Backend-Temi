@@ -7,17 +7,16 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-@Getter
+@Getter @Builder
 @RequiredArgsConstructor
 public class PurchaseFoodListResponse {
-    private final Long id;
-    private final Long seatNumber;
+    private final int seatNumber;
     private final List<FoodInfo> foodInfoList;
 
     @Getter @Builder
     @AllArgsConstructor
     public static class FoodInfo{
-        private final Long foodId;
+        private final String foodName;
         private final Long foodCount;
     }
 }

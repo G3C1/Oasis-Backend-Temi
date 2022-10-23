@@ -1,9 +1,10 @@
 package com.g3c1.temi.domain.purchase.presentation;
 
-import com.g3c1.temi.domain.purchase.entity.Purchase;
 import com.g3c1.temi.domain.purchase.presentation.dto.request.PurchaseFoodRequest;
+import com.g3c1.temi.domain.purchase.presentation.dto.response.PurchaseFoodListResponse;
 import com.g3c1.temi.domain.purchase.service.impl.GetPurchaseFoodListServiceImpl;
 import com.g3c1.temi.domain.purchase.service.impl.PurchaseFoodServiceImpl;
+import com.g3c1.temi.domain.seat.entity.Seat;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class PurchaseController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping
-    public ResponseEntity<List<Purchase>> getPurchaseFoodList(){
+    public ResponseEntity<List<PurchaseFoodListResponse>> getPurchaseFoodList(){
         return new ResponseEntity<>(getPurchaseFoodListService.execute(),HttpStatus.OK);
     }
 }
