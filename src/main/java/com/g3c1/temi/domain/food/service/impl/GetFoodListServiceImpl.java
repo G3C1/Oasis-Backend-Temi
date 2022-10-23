@@ -31,7 +31,7 @@ public class GetFoodListServiceImpl implements GetFoodListService {
     }
     private List<CategoryFoodListResponse> getCategoryFoodList(List<Category> categories){
         return categories.stream().map(category -> {
-            List<FoodInfoResponse> foodInfoResponses = getFoodInfoListByCategory(category.getName());
+            List<FoodInfoResponse> foodInfoResponses = getFoodInfoListByCategory(category);
             return CategoryFoodListResponse.builder()
                     .id(category.getId())
                     .category(category.getName())
@@ -39,9 +39,8 @@ public class GetFoodListServiceImpl implements GetFoodListService {
                     .build();
         }).collect(Collectors.toList());
     }
-    private List<FoodInfoResponse> getFoodInfoListByCategory(String categoryName){
-        Category category1 = categoryRepository.findCategoryByName(categoryName);
-       return foodRepository.findFoodByCategory(category1).stream().map(food -> FoodInfoResponse.builder()
+    private List<FoodInfoResponse> getFoodInfoListByCategory(Category category){
+       return foodRepository.findFoodByCategory(category).stream().map(food -> FoodInfoResponse.builder()
                 .id(food.getId())
                 .name(food.getName())
                 .img(food.getImg())
