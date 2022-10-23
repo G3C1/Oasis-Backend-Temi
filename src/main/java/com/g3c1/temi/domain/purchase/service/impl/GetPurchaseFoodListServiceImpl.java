@@ -17,5 +17,6 @@ public class GetPurchaseFoodListServiceImpl implements GetPurchaseFoodListServic
     @Override
     public List<Purchase> execute() {
         List<Purchase> purchaseList = purchaseRepository.findAll();
+        return null;
     }
 }

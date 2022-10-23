@@ -17,7 +17,7 @@ public class PurchaseFoodListResponse {
     @Getter @Builder
     @AllArgsConstructor
     public static class FoodInfo{
-        private final String foodName;
+        private final Long foodId;
         private final Long foodCount;
     }
 }

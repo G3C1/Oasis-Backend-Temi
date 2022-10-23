@@ -21,8 +21,9 @@ public class Purchase extends BaseTimeEntity {
     private Seat seat;
     private Long foodCount;
 
-    public Purchase(Food foodInfo, Seat seatInfo) {
+    public Purchase(Food foodInfo, Seat seatInfo, Long foodCount) {
         this.food = foodInfo;
         this.seat = seatInfo;
+        this.foodCount = foodCount;
     }
 }
