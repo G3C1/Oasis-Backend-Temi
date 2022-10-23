@@ -6,7 +6,6 @@ import com.g3c1.temi.domain.purchase.entity.Purchase;
 import com.g3c1.temi.domain.purchase.exception.FoodNotFoundException;
 import com.g3c1.temi.domain.purchase.presentation.dto.request.PurchaseFoodRequest;
 import com.g3c1.temi.domain.purchase.repository.PurchaseRepository;
-import com.g3c1.temi.domain.purchase.service.PurchaseFoodService;
 import com.g3c1.temi.domain.seat.entity.Seat;
 import com.g3c1.temi.domain.seat.utils.SeatUtils;
 import com.g3c1.temi.domain.seat.utils.SeatValidator;
@@ -19,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class PurchaseFoodServiceImpl implements PurchaseFoodService {
+public class PurchaseFoodServiceImpl{
     private final PurchaseRepository purchaseRepository;
     private final FoodRepository foodRepository;
     private final SeatUtils seatUtils;

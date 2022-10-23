@@ -19,6 +19,7 @@ public class Purchase extends BaseTimeEntity {
     private Food food;
     @ManyToOne()
     private Seat seat;
+    private Long foodCount;
 
     public Purchase(Food foodInfo, Seat seatInfo) {
         this.food = foodInfo;
