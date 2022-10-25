@@ -1,6 +1,6 @@
 package com.g3c1.temi.domain.seat.service.impl;
 
-import com.g3c1.temi.domain.seat.domain.entity.Seat;
+import com.g3c1.temi.domain.seat.entity.Seat;
 import com.g3c1.temi.domain.seat.service.DisableSeatService;
 import com.g3c1.temi.domain.seat.utils.SeatUtils;
 import com.g3c1.temi.domain.seat.utils.SeatValidator;

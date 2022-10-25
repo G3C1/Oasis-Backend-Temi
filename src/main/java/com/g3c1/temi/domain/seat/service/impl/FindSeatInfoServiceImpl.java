@@ -1,6 +1,6 @@
 package com.g3c1.temi.domain.seat.service.impl;
 
-import com.g3c1.temi.domain.seat.domain.entity.Seat;
+import com.g3c1.temi.domain.seat.entity.Seat;
 import com.g3c1.temi.domain.seat.presentation.dto.response.SeatInfoResponse;
 import com.g3c1.temi.domain.seat.service.FindSeatInfoService;
 import com.g3c1.temi.domain.seat.utils.SeatUtils;
@@ -26,7 +26,7 @@ public class FindSeatInfoServiceImpl implements FindSeatInfoService {
         return seatList.stream().map(seat -> SeatInfoResponse.builder()
                 .seatId(seat.getId())
                 .seatNumber(seat.getSeatNumber())
-                .seated(seat.getEnabled())
+                .enabled(seat.getEnabled())
                 .severalPeople(seat.getSeveralPeople())
                 .build()).collect(Collectors.toList());
     }

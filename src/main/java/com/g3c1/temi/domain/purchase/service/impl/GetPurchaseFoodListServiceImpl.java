@@ -1,10 +1,10 @@
 package com.g3c1.temi.domain.purchase.service.impl;
 
-import com.g3c1.temi.domain.purchase.domain.entity.Purchase;
+import com.g3c1.temi.domain.purchase.entity.Purchase;
+import com.g3c1.temi.domain.purchase.repository.PurchaseRepository;
 import com.g3c1.temi.domain.purchase.presentation.dto.response.PurchaseFoodListResponse;
-import com.g3c1.temi.domain.purchase.domain.repository.PurchaseRepository;
 import com.g3c1.temi.domain.purchase.service.GetPurchaseFoodListService;
-import com.g3c1.temi.domain.seat.domain.entity.Seat;
+import com.g3c1.temi.domain.seat.entity.Seat;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
