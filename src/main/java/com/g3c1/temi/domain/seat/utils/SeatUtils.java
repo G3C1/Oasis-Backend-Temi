@@ -1,8 +1,8 @@
 package com.g3c1.temi.domain.seat.utils;
 
-import com.g3c1.temi.domain.seat.entity.Seat;
+import com.g3c1.temi.domain.seat.domain.entity.Seat;
 import com.g3c1.temi.domain.seat.exception.SeatNotFoundException;
-import com.g3c1.temi.domain.seat.repository.SeatRepository;
+import com.g3c1.temi.domain.seat.domain.repository.SeatRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

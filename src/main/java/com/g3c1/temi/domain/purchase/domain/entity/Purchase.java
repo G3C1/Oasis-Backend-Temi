@@ -1,7 +1,7 @@
-package com.g3c1.temi.domain.purchase.entity;
+package com.g3c1.temi.domain.purchase.domain.entity;
 
-import com.g3c1.temi.domain.food.entity.Food;
-import com.g3c1.temi.domain.seat.entity.Seat;
+import com.g3c1.temi.domain.food.domain.entity.Food;
+import com.g3c1.temi.domain.seat.domain.entity.Seat;
 import com.g3c1.temi.global.entity.BaseTimeEntity;
 import lombok.*;
 

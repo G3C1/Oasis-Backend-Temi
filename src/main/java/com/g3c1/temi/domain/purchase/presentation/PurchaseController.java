@@ -4,7 +4,6 @@ import com.g3c1.temi.domain.purchase.presentation.dto.request.PurchaseFoodReques
 import com.g3c1.temi.domain.purchase.presentation.dto.response.PurchaseFoodListResponse;
 import com.g3c1.temi.domain.purchase.service.impl.GetPurchaseFoodListServiceImpl;
 import com.g3c1.temi.domain.purchase.service.impl.PurchaseFoodServiceImpl;
-import com.g3c1.temi.domain.seat.entity.Seat;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

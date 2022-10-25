@@ -1,4 +1,4 @@
-package com.g3c1.temi.domain.seat.entity;
+package com.g3c1.temi.domain.seat.domain.entity;
 
 import lombok.*;
 
