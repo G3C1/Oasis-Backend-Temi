@@ -9,5 +9,5 @@ public class SeatInfoResponse {
     private final Long seatId;
     private final int seatNumber;
     private final int severalPeople;
-    private final Boolean seated;
+    private final Boolean enabled;
 }
