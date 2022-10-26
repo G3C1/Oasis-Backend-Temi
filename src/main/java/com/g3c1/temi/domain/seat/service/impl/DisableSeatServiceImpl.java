@@ -1,7 +1,6 @@
 package com.g3c1.temi.domain.seat.service.impl;
 
 import com.g3c1.temi.domain.seat.entity.Seat;
-import com.g3c1.temi.domain.seat.service.DisableSeatService;
 import com.g3c1.temi.domain.seat.utils.SeatUtils;
 import com.g3c1.temi.domain.seat.utils.SeatValidator;
 import lombok.RequiredArgsConstructor;
@@ -10,8 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class DisableSeatServiceImpl implements DisableSeatService {
-
+public class DisableSeatServiceImpl{
     private final SeatUtils seatUtils;
     private final SeatValidator seatValidator;
 
