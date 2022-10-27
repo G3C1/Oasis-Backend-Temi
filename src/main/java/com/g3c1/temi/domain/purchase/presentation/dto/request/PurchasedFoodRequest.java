@@ -5,11 +5,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class PurchaseFoodRequest {
+public class PurchasedFoodRequest {
+    
     private final Long seatId;
     private final List<PurchaseFoodList> foodLists;
 

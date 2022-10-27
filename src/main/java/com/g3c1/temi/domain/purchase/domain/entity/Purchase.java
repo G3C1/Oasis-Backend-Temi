@@ -1,6 +1,6 @@
-package com.g3c1.temi.domain.purchase.entity;
+package com.g3c1.temi.domain.purchase.domain.entity;
 
-import com.g3c1.temi.domain.food.entity.Food;
+import com.g3c1.temi.domain.food.domain.entity.Food;
 import com.g3c1.temi.domain.seat.entity.Seat;
 import com.g3c1.temi.global.entity.BaseTimeEntity;
 import lombok.*;
@@ -21,9 +21,9 @@ public class Purchase extends BaseTimeEntity {
     private Seat seat;
     private Long foodCount;
 
-    public Purchase(Food foodInfo, Seat seatInfo, Long foodCount) {
-        this.food = foodInfo;
+    public Purchase(Seat seatInfo, Food foodInfoById, Long foodCount) {
         this.seat = seatInfo;
+        this.food = foodInfoById;
         this.foodCount = foodCount;
     }
 }

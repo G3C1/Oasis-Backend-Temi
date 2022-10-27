@@ -1,9 +1,8 @@
 package com.g3c1.temi.domain.purchase.presentation;
 
-import com.g3c1.temi.domain.purchase.presentation.dto.request.PurchaseFoodRequest;
-import com.g3c1.temi.domain.purchase.presentation.dto.response.PurchaseFoodListResponse;
-import com.g3c1.temi.domain.purchase.service.GetPurchaseFoodListService;
-import com.g3c1.temi.domain.purchase.service.PurchaseFoodService;
+import com.g3c1.temi.domain.purchase.presentation.dto.request.PurchasedFoodRequest;
+import com.g3c1.temi.domain.purchase.presentation.dto.response.PurchasedFoodListResponse;
+import com.g3c1.temi.domain.purchase.service.PurchaseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,15 +14,14 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("purchase")
 public class PurchaseController {
-    private final PurchaseFoodService purchaseFoodService;
-    private final GetPurchaseFoodListService getPurchaseFoodListService;
+    private final PurchaseService purchaseService;
     @PostMapping
-    public ResponseEntity<Void> purchaseFood(@RequestBody PurchaseFoodRequest purchaseFoodRequest){
-        purchaseFoodService.execute(purchaseFoodRequest);
+    public ResponseEntity<Void> addPurchasedFood(@RequestBody PurchasedFoodRequest purchaseFoodRequest){
+        purchaseService.addPurchasedFood(purchaseFoodRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping
-    public ResponseEntity<List<PurchaseFoodListResponse>> getPurchaseFoodList(){
-        return new ResponseEntity<>(getPurchaseFoodListService.execute(),HttpStatus.OK);
+    public ResponseEntity<List<PurchasedFoodListResponse>> getPurchaseFoodList(){
+        return new ResponseEntity<>(purchaseService.getPurchaseFoodInfo(),HttpStatus.OK);
     }
 }

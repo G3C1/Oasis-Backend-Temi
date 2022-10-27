@@ -1,6 +1,6 @@
-package com.g3c1.temi.domain.purchase.repository;
+package com.g3c1.temi.domain.purchase.domain.repository;
 
-import com.g3c1.temi.domain.purchase.entity.Purchase;
+import com.g3c1.temi.domain.purchase.domain.entity.Purchase;
 import com.g3c1.temi.domain.seat.entity.Seat;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

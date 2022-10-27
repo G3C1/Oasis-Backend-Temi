@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter @Builder
 @RequiredArgsConstructor
-public class PurchaseFoodListResponse {
+public class PurchasedFoodListResponse {
     private final int seatNumber;
     private final List<FoodInfo> foodInfoList;
 
