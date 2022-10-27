@@ -32,7 +32,7 @@ public class SeatServiceImpl implements SeatService {
         seatValidator.checkSeatIsUsed(seatInfo);
         updateSeated(seatInfo,false);
     }
-
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void disableSeat(Long seatId) {
         Seat seatInfo = seatUtils.getSeatInfo(seatId);

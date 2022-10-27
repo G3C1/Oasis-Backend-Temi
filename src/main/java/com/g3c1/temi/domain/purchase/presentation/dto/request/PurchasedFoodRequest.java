@@ -5,23 +5,24 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
 public class PurchasedFoodRequest {
-    @NotBlank(message = "좌석아이디를 입력해주세요")
+    @NotNull(message = "좌석아이디를 입력해주세요")
     private final Long seatId;
+    @NotNull(message = "주문할 음식이 존재하지 않습니다.")
     private final List<PurchaseFoodList> foodLists;
 
-    @Getter @Builder
+    @Getter @Builder @Valid
     @AllArgsConstructor
     public static class PurchaseFoodList{
-        @NotBlank(message = "음식을 선택해주세요")
+        @NotNull(message = "존재하지 않는 음식 아이디입니다.")
         private final Long foodId;
-        @NotBlank(message = "수량을 입력해주세요")
+        @NotNull(message = "음식 수량이 존재하지 않습니다.")
         private final Long foodCount;
     }
 }

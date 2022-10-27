@@ -8,4 +8,5 @@ import java.util.List;
 public interface PurchaseService {
     List<PurchasedFoodListResponse> getPurchaseFoodInfo();
     void addPurchasedFood(PurchasedFoodRequest purchaseFoodRequest);
+    void removePurchasedFood(Long seatId);
 }

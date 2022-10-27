@@ -12,4 +12,5 @@ public interface PurchaseRepository extends JpaRepository<Purchase,Long>, JpaSpe
     @Query(value = "SELECT purchase FROM Purchase purchase group by purchase.id,purchase.seat,purchase.createdAt,purchase.foodCount,purchase.food order by purchase.createdAt DESC")
     List<Purchase> findAll();
     List<Purchase> findPurchaseBySeat(Seat seat);
+    void deleteBySeat(Seat seat);
 }

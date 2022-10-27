@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @RestController
@@ -21,12 +22,12 @@ public class SeatController {
         return new ResponseEntity<>(seatInfoList, HttpStatus.OK);
     }
     @PatchMapping("/{seatId}")
-    public ResponseEntity<Void> enableSeat(@PathVariable("seatId")Long seatId){
+    public ResponseEntity<Void> enableSeat(@PathVariable("seatId")@NotBlank Long seatId){
         seatService.enableSeat(seatId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     @PatchMapping("/cancel/{seatId}")
-    public ResponseEntity<Void> disableSeat(@PathVariable("seatId")Long seatId){
+    public ResponseEntity<Void> disableSeat(@PathVariable("seatId")@NotBlank Long seatId){
         seatService.disableSeat(seatId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

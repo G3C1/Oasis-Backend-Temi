@@ -11,6 +11,7 @@ import com.g3c1.temi.domain.seat.utils.SeatUtils;
 import com.g3c1.temi.domain.seat.utils.SeatValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,8 @@ public class PurchaseServiceImpl implements PurchaseService {
     private final SeatUtils seatUtils;
     private final SeatValidator seatValidator;
     private final FoodUtils foodUtils;
+
+    @Transactional(rollbackFor = Exception.class,readOnly = true)
     @Override
     public List<PurchasedFoodListResponse> getPurchaseFoodInfo() {
         List<Purchase> purchaseList = purchaseRepository.findAll();
@@ -33,11 +36,17 @@ public class PurchaseServiceImpl implements PurchaseService {
                 .build())
                 .collect(Collectors.toList());
     }
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void addPurchasedFood(PurchasedFoodRequest purchaseFoodRequest) {
         Seat seatInfo = seatUtils.getSeatInfo(purchaseFoodRequest.getSeatId());
         seatValidator.checkSeatIsNotUsed(seatInfo);
         saveAllFoodList(purchaseFoodRequest.getFoodLists(),seatInfo);
+    }
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void removePurchasedFood(Long seatId) {
+        purchaseRepository.deleteBySeat(seatUtils.getSeatInfo(seatId));
     }
 
     private List<PurchasedFoodListResponse.FoodInfo> getFoodInfoList(Seat seat) {

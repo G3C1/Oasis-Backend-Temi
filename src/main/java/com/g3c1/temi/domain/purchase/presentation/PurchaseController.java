@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @RestController
@@ -24,5 +25,10 @@ public class PurchaseController {
     @GetMapping
     public ResponseEntity<List<PurchasedFoodListResponse>> getPurchaseFoodList(){
         return new ResponseEntity<>(purchaseService.getPurchaseFoodInfo(),HttpStatus.OK);
+    }
+    @DeleteMapping("/{seatId}")
+    public ResponseEntity<Void> purchasedFoodRemove(@PathVariable("seatId")@NotBlank Long seatId){
+        purchaseService.removePurchasedFood(seatId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
