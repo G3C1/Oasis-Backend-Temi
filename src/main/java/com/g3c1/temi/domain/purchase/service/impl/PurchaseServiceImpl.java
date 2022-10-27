@@ -1,13 +1,12 @@
 package com.g3c1.temi.domain.purchase.service.impl;
 
-import com.g3c1.temi.domain.food.domain.entity.Food;
 import com.g3c1.temi.domain.food.utils.FoodUtils;
 import com.g3c1.temi.domain.purchase.domain.entity.Purchase;
 import com.g3c1.temi.domain.purchase.domain.repository.PurchaseRepository;
 import com.g3c1.temi.domain.purchase.presentation.dto.request.PurchasedFoodRequest;
 import com.g3c1.temi.domain.purchase.presentation.dto.response.PurchasedFoodListResponse;
 import com.g3c1.temi.domain.purchase.service.PurchaseService;
-import com.g3c1.temi.domain.seat.entity.Seat;
+import com.g3c1.temi.domain.seat.domain.entity.Seat;
 import com.g3c1.temi.domain.seat.utils.SeatUtils;
 import com.g3c1.temi.domain.seat.utils.SeatValidator;
 import lombok.RequiredArgsConstructor;

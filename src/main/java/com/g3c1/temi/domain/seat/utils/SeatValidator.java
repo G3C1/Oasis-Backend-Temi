@@ -1,6 +1,6 @@
 package com.g3c1.temi.domain.seat.utils;
 
-import com.g3c1.temi.domain.seat.entity.Seat;
+import com.g3c1.temi.domain.seat.domain.entity.Seat;
 import com.g3c1.temi.domain.seat.exception.SeatNotEnableException;
 import com.g3c1.temi.domain.seat.exception.SeatNotAbleException;
 import org.springframework.stereotype.Component;
