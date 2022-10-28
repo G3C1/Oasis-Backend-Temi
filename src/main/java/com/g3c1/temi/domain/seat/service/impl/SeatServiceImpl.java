@@ -24,6 +24,14 @@ public class SeatServiceImpl implements SeatService {
         List<Seat> seatList = seatUtils.getSeatList();
         return getSeatInfoList(seatList);
     }
+    private List<SeatInfoResponse> getSeatInfoList(List<Seat> seatList) {
+        return seatList.stream().map(seat -> SeatInfoResponse.builder()
+                .seatId(seat.getId())
+                .seatNumber(seat.getSeatNumber())
+                .enabled(seat.getEnabled())
+                .severalPeople(seat.getSeveralPeople())
+                .build()).collect(Collectors.toList());
+    }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
@@ -32,21 +40,13 @@ public class SeatServiceImpl implements SeatService {
         seatValidator.checkSeatIsUsed(seatInfo);
         updateSeated(seatInfo,false);
     }
+
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void disableSeat(Long seatId) {
         Seat seatInfo = seatUtils.getSeatInfo(seatId);
         seatValidator.checkSeatIsNotUsed(seatInfo);
         updateSeated(seatInfo,true);
-    }
-
-    private List<SeatInfoResponse> getSeatInfoList(List<Seat> seatList) {
-        return seatList.stream().map(seat -> SeatInfoResponse.builder()
-                .seatId(seat.getId())
-                .seatNumber(seat.getSeatNumber())
-                .enabled(seat.getEnabled())
-                .severalPeople(seat.getSeveralPeople())
-                .build()).collect(Collectors.toList());
     }
     private void updateSeated(Seat seatInfo,Boolean enabled){
         seatInfo.updateSeated(enabled);

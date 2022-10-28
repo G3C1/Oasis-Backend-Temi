@@ -36,26 +36,12 @@ public class PurchaseServiceImpl implements PurchaseService {
                 .build())
                 .collect(Collectors.toList());
     }
-    @Transactional(rollbackFor = Exception.class)
-    @Override
-    public void addPurchasedFood(PurchasedFoodRequest purchaseFoodRequest) {
-        Seat seatInfo = seatUtils.getSeatInfo(purchaseFoodRequest.getSeatId());
-        seatValidator.checkSeatIsNotUsed(seatInfo);
-        saveAllFoodList(purchaseFoodRequest.getFoodLists(),seatInfo);
-    }
-    @Transactional(rollbackFor = Exception.class)
-    @Override
-    public void removePurchasedFood(Long seatId) {
-        purchaseRepository.deleteBySeat(seatUtils.getSeatInfo(seatId));
-    }
-
     private List<PurchasedFoodListResponse.FoodInfo> getFoodInfoList(Seat seat) {
         return purchaseRepository.findPurchaseBySeat(seat).stream().map(purchase -> PurchasedFoodListResponse.FoodInfo.builder()
                 .foodName(purchase.getFood().getName())
                 .foodCount(purchase.getFoodCount())
                 .build()).collect(Collectors.toList());
     }
-
     private List<Seat> getSeatIdList(List<Purchase> purchaseList) {
         List<Seat> seatList = new ArrayList<>();
         purchaseList.forEach(purchase -> {
@@ -63,9 +49,23 @@ public class PurchaseServiceImpl implements PurchaseService {
         });
         return seatList.stream().distinct().collect(Collectors.toList());
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void addPurchasedFood(PurchasedFoodRequest purchaseFoodRequest) {
+        Seat seatInfo = seatUtils.getSeatInfo(purchaseFoodRequest.getSeatId());
+        seatValidator.checkSeatIsNotUsed(seatInfo);
+        saveAllFoodList(purchaseFoodRequest.getFoodLists(),seatInfo);
+    }
     private void saveAllFoodList(List<PurchasedFoodRequest.PurchaseFoodList>foodInfoList, Seat seatInfo){
         purchaseRepository.saveAll(foodInfoList.stream()
                 .map(foodInfo -> new Purchase(seatInfo,foodUtils.findFoodInfoById(foodInfo.getFoodId()),foodInfo.getFoodCount()))
                 .collect(Collectors.toList()));
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void removePurchasedFood(Long seatId) {
+        purchaseRepository.deleteBySeat(seatUtils.getSeatInfo(seatId));
     }
 }
