@@ -10,6 +10,7 @@ import java.util.List;
 @Getter @Builder
 @RequiredArgsConstructor
 public class PurchasedFoodListResponse {
+    private final Long seatId;
     private final int seatNumber;
     private final List<FoodInfo> foodInfoList;
 

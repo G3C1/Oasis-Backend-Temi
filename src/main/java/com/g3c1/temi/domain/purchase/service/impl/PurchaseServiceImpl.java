@@ -31,10 +31,10 @@ public class PurchaseServiceImpl implements PurchaseService {
         List<Purchase> purchaseList = purchaseRepository.findAll();
         List<Seat> seatIdList = getSeatIdList(purchaseList);
         return seatIdList.stream().map(seat -> PurchasedFoodListResponse.builder()
-                .seatNumber(seat.getSeatNumber())
-                .foodInfoList(getFoodInfoList(seat))
-                .build())
-                .collect(Collectors.toList());
+                        .seatId(seat.getId())
+                        .seatNumber(seat.getSeatNumber())
+                        .foodInfoList(getFoodInfoList(seat))
+                        .build()).collect(Collectors.toList());
     }
     private List<PurchasedFoodListResponse.FoodInfo> getFoodInfoList(Seat seat) {
         return purchaseRepository.findPurchaseBySeat(seat).stream().map(purchase -> PurchasedFoodListResponse.FoodInfo.builder()
