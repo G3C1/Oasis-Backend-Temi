@@ -22,12 +22,12 @@ public class SeatController {
         return new ResponseEntity<>(seatInfoList, HttpStatus.OK);
     }
     @PatchMapping("/{seatId}")
-    public ResponseEntity<Void> enableSeat(@PathVariable("seatId")@NotBlank Long seatId){
+    public ResponseEntity<Void> enableSeat(@PathVariable("seatId") Long seatId){
         seatService.enableSeat(seatId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     @PatchMapping("/cancel/{seatId}")
-    public ResponseEntity<Void> disableSeat(@PathVariable("seatId")@NotBlank Long seatId){
+    public ResponseEntity<Void> disableSeat(@PathVariable("seatId") Long seatId){
         seatService.disableSeat(seatId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
