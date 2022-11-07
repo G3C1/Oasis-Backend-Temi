@@ -11,7 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PurchasedFoodListResponse {
     private final Long seatId;
-    private final int seatNumber;
+    private final Long seatNumber;
     private final List<FoodInfo> foodInfoList;
 
     @Getter @Builder

@@ -13,9 +13,9 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "seat_number")
-    private int seatNumber;
+    private Long seatNumber;
     @Column(name = "several_people")
-    private int severalPeople;
+    private Long severalPeople;
     private Boolean enabled;
 
     public void updateSeated(Boolean enable){
