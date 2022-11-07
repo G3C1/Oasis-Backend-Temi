@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SeatInfoResponse {
     private final Long seatId;
-    private final int seatNumber;
-    private final int severalPeople;
+    private final Long seatNumber;
+    private final Long severalPeople;
     private final Boolean enabled;
 }

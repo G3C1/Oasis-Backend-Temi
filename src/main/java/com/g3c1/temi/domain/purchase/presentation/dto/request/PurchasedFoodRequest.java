@@ -20,7 +20,7 @@ public class PurchasedFoodRequest {
     @Getter @Builder @Valid
     @AllArgsConstructor
     public static class PurchaseFoodList{
-        @NotNull(message = "존재하지 않는 음식 아이디입니다.")
+        @NotNull(message = "음식아이디가 존재하지 않습니다.")
         private final Long foodId;
         @NotNull(message = "음식 수량이 존재하지 않습니다.")
         private final Long foodCount;
