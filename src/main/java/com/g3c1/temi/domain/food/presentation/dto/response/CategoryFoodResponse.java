@@ -21,7 +21,7 @@ public class CategoryFoodResponse {
         private final String name;
         private final String img;
         private final String description;
-        private final Integer servings;
+        private final Long servings;
         private final Long price;
     }
 }
