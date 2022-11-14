@@ -15,7 +15,7 @@ public class PurchasedFoodRequest {
     @NotNull(message = "좌석아이디를 입력해주세요")
     private final Long seatId;
     @NotNull(message = "주문할 음식이 존재하지 않습니다.")
-    private final List<PurchaseFoodList> foodLists;
+    private final List<PurchaseFoodList> foodList;
 
     @Getter @Builder @Valid
     @AllArgsConstructor
