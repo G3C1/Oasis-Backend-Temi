@@ -55,7 +55,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     public void addPurchasedFood(PurchasedFoodRequest purchaseFoodRequest) {
         Seat seatInfo = seatUtils.getSeatInfo(purchaseFoodRequest.getSeatId());
         seatValidator.checkSeatIsNotUsed(seatInfo);
-        saveAllFoodList(purchaseFoodRequest.getFoodLists(),seatInfo);
+        saveAllFoodList(purchaseFoodRequest.getFoodList(),seatInfo);
     }
     private void saveAllFoodList(List<PurchasedFoodRequest.PurchaseFoodList>foodInfoList, Seat seatInfo){
         purchaseRepository.saveAll(foodInfoList.stream()
